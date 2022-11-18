@@ -1,0 +1,73 @@
+/* They are built-in browser functionality */
+@use postcss-preset-env;
+
+/* What's postcss? */
+/* It takes your CSS Code & converts it into CSS code that the browser can understand. It's similar to babble */
+
+* {
+  font-size: 2rem;
+}
+
+article {
+  background-color: blanchedalmond;
+}
+
+/* If u wanna change the p tag in the article */
+
+article p {
+  color: black;
+}
+
+/* U can also do it in another way called Nesting. The way nesting works inside of CSS is u need to put an & */
+/* & - Stands for whatever your selector is above */
+/* The & is just replacing whatever the code is outside */
+
+article {
+  background-color: blanchedalmond;
+
+  & p {
+    color: black;
+  }
+}
+
+/* If u don't have the & as the very first property on the line, you need to perfix it with the addNest keyword */
+/* If u need to use the &, select the parent selector. If the & is not at the start of ur code, add @nest */
+
+p {
+  @nest article & {
+    color: yellow;
+  }
+}
+
+/* With CSS nesting, you need the & otherwise it won't work & u can nest as may levels deep as you want */
+/* Having small amount of nesting is considered good */
+
+article {
+  background-color: blanchedalmond;
+
+  & p {
+    color: black;
+  }
+
+  & a {
+    color: brown;
+  }
+}
+
+/* U can also do Media Queries with Nesting */
+
+article {
+  background-color: blanchedalmond;
+  @media (min-width: 768px) {
+    & {
+      background: blue;
+    }
+  }
+}
+
+/* If u use the comma separated syntax & then you do nesting inside of that, it's gonna convert to be using the is keyword */
+/* The :is() property has a specifity of 1 ID & then a single element  */
+
+:is(article) p {
+  color: beige;
+}
